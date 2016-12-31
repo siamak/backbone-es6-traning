@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Backbone Training</title>
+
+	<!-- Google Fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+
+	<!-- CSS Reset -->
+	<link rel="stylesheet" href="src/components/normalize.css/normalize.css">
+
+	<!-- Milligram CSS minified -->
+	<link rel="stylesheet" href="src/components/milligram/dist/milligram.min.css">
+</head>
+<body>
+	<section class="container">
+		<h2>Front–End Developers:</h2>
+		<section id="unique"></section>
+	</section>
+	<script type="text/template" id="test-template">
+		<ul>
+			<% _.each(people, function(person) { %>
+				<li class="btn">
+					<%= person.name %>
+					<a class="button button-clear" href="http://twitter.com/<%= person.twitter %>"><%= person.twitter %></a>
+				</li>
+			<% }); %>
+		</ul>
+	</script>
+	<script src="build/bundle.js"></script>
+</body>
+</html>
