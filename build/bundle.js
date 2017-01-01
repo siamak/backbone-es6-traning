@@ -13699,8 +13699,6 @@ return jQuery;
 
 var _backbone = require('backbone');
 
-var _backbone2 = _interopRequireDefault(_backbone);
-
 var _underscore = require('underscore');
 
 var _underscore2 = _interopRequireDefault(_underscore);
@@ -13712,18 +13710,17 @@ var _jquery2 = _interopRequireDefault(_jquery);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Person = _backbone.Model.extend({
-	default: {
+	defaults: {
 		id: 0,
-		name: 'Adam Daniel',
-		birthday: 1950,
-		age: 20,
-		twitter: 'tweet'
+		name: 'Adam Sandler',
+		birthday: 1966,
+		twitter: 'adamsandler'
 	},
 	initialize: function initialize() {
 		this.ageCalculator();
 	},
 	ageCalculator: function ageCalculator() {
-		this.age = new Date().getFullYear() - this.birthday;
+		this.attributes.age = new Date().getFullYear() - this.attributes.birthday;
 	}
 });
 
@@ -13736,8 +13733,7 @@ var Markup = _backbone.View.extend({
 		this.render();
 	},
 	render: function render() {
-		// console.log(this.model.map(child => child.attributes.name));
-		var templateDOM = (0, _jquery2.default)('#test-template').html();
+		var templateDOM = (0, _jquery2.default)('#template').html();
 		var template = _underscore2.default.template(templateDOM);
 		(0, _jquery2.default)('#unique').html(template({
 			people: this.collection.toJSON()
@@ -13755,7 +13751,7 @@ var Markup = _backbone.View.extend({
 	var Elahe = new Person({
 		id: 1001,
 		name: 'Elahe Hashemi',
-		birthday: 1996,
+		birthday: 1995,
 		twitter: 'eli___h'
 	});
 	var Class = new People([Siamak, Elahe]);

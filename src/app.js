@@ -1,20 +1,19 @@
-import Backbone, {Model, View, Collection} from 'backbone';
+import {Model, View, Collection} from 'backbone';
 import _ from 'underscore';
 import $ from 'jquery';
 
 const Person = Model.extend({
-	default: {
+	defaults: {
 		id: 0,
-		name: 'Adam Daniel',
-		birthday: 1950,
-		age: 20,
-		twitter: 'tweet'
+		name: 'Adam Sandler',
+		birthday: 1966,
+		twitter: 'adamsandler'
 	},
 	initialize() {
 		this.ageCalculator();
 	},
 	ageCalculator() {
-		this.age = new Date().getFullYear() - this.birthday;
+		this.attributes.age = new Date().getFullYear() - this.attributes.birthday;
 	}
 });
 
@@ -27,8 +26,7 @@ const Markup = View.extend({
 		this.render();
 	},
 	render() {
-		// console.log(this.model.map(child => child.attributes.name));
-		const templateDOM = $('#test-template').html();
+		const templateDOM = $('#template').html();
 		const template = _.template(templateDOM);
 		$('#unique').html(template({
 			people: this.collection.toJSON()
@@ -46,7 +44,7 @@ $(document).ready(function () {
 	const Elahe = new Person({
 		id: 1001,
 		name: 'Elahe Hashemi',
-		birthday: 1996,
+		birthday: 1995,
 		twitter: 'eli___h'
 	});
 	const Class = new People([Siamak, Elahe]);
